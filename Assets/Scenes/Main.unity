@@ -133,10 +133,10 @@ GameObject:
   m_Component:
   - component: {fileID: 415889165}
   - component: {fileID: 415889164}
-  - component: {fileID: 415889168}
   - component: {fileID: 415889167}
   - component: {fileID: 415889166}
   - component: {fileID: 415889169}
+  - component: {fileID: 415889170}
   m_Layer: 6
   m_Name: Spaceship
   m_TagString: Untagged
@@ -185,7 +185,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: febcf3c28984bdf46967ac142bf246c7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -205,7 +205,7 @@ Transform:
   m_GameObject: {fileID: 415889163}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -257,7 +257,19 @@ MonoBehaviour:
     m_ActionId: 5364e040-1ac5-44ee-956b-2f2ac84ace4c
     m_ActionName: Player/Look[/Mouse/delta,/Pen/delta]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 415889169}
+        m_TargetAssemblyTypeName: OneHourJam458.PlayerController, Assembly-CSharp
+        m_MethodName: OnShoot
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 8b2006ac-0e37-4f6d-a9f0-f2b20f5948b7
     m_ActionName: Player/Fire[/Mouse/leftButton]
   - m_PersistentCalls:
@@ -326,22 +338,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!58 &415889168
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 415889163}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.5
 --- !u!114 &415889169
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -354,6 +350,89 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05ce7aa2496ee804ba8c91b373dc7d3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _bullet: {fileID: 8319796824531430367, guid: b27f3c728827db141bcbda8b8fbbbe5f, type: 3}
+--- !u!60 &415889170
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 415889163}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 3, y: 3.37}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 1.29, y: -1.105}
+      - {x: 1.3, y: -1.005}
+      - {x: 1.3, y: -0.815}
+      - {x: 1.29, y: -0.715}
+      - {x: 1.28, y: -0.555}
+      - {x: 1.15, y: -0.295}
+      - {x: 1.11, y: -0.265}
+      - {x: 0.98999995, y: -0.145}
+      - {x: 0.78, y: -0.035}
+      - {x: 0.77, y: 0.415}
+      - {x: 0.71, y: 0.695}
+      - {x: 0.57, y: 0.995}
+      - {x: 0.47, y: 1.145}
+      - {x: 0.28, y: 1.3149999}
+      - {x: 0.099999994, y: 1.385}
+      - {x: 0.08, y: 1.5949999}
+      - {x: 0.01, y: 1.655}
+      - {x: -0.08, y: 1.655}
+      - {x: -0.14999999, y: 1.555}
+      - {x: -0.19, y: 1.375}
+      - {x: -0.39, y: 1.285}
+      - {x: -0.52, y: 1.155}
+      - {x: -0.64, y: 0.97499996}
+      - {x: -0.74, y: 0.775}
+      - {x: -0.79999995, y: 0.525}
+      - {x: -0.84, y: 0.305}
+      - {x: -0.83, y: -0.074999996}
+      - {x: -0.89, y: -0.074999996}
+      - {x: -1.05, y: -0.125}
+      - {x: -1.1999999, y: -0.275}
+      - {x: -1.31, y: -0.45499998}
+      - {x: -1.3399999, y: -0.585}
+      - {x: -1.36, y: -0.695}
+      - {x: -1.37, y: -0.78499997}
+      - {x: -1.37, y: -1.005}
+      - {x: -1.31, y: -1.245}
+      - {x: -1.1999999, y: -1.425}
+      - {x: -1.06, y: -1.5649999}
+      - {x: -0.89, y: -1.625}
+      - {x: -0.75, y: -1.615}
+      - {x: -0.62, y: -1.545}
+      - {x: -0.44, y: -1.355}
+      - {x: -0.35999998, y: -1.165}
+      - {x: -0.32999998, y: -1.015}
+      - {x: -0.21, y: -1.0849999}
+      - {x: 0.07, y: -1.115}
+      - {x: 0.25, y: -1.025}
+      - {x: 0.29, y: -1.1949999}
+      - {x: 0.35, y: -1.345}
+      - {x: 0.44, y: -1.495}
+      - {x: 0.56, y: -1.605}
+      - {x: 0.64, y: -1.655}
+      - {x: 0.71999997, y: -1.665}
+      - {x: 0.84999996, y: -1.665}
+      - {x: 0.98999995, y: -1.615}
+      - {x: 1.15, y: -1.4549999}
+      - {x: 1.23, y: -1.275}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
