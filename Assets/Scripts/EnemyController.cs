@@ -16,7 +16,7 @@ namespace OneHourJam458
 
         private void FixedUpdate()
         {
-            _rb.velocity = (_start.transform.position - transform.position).normalized * 1.5f;
+            _rb.velocity = (_start.transform.position - transform.position).normalized * 3f;
 
             if (Vector2.Distance(transform.position, _start.transform.position) < .1f)
             {
