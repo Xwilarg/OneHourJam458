@@ -351,6 +351,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _bullet: {fileID: 8319796824531430367, guid: b27f3c728827db141bcbda8b8fbbbe5f, type: 3}
+  _enemy: {fileID: 1188495501}
 --- !u!60 &415889170
 PolygonCollider2D:
   m_ObjectHideFlags: 0

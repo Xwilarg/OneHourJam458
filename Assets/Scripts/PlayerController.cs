@@ -9,6 +9,13 @@ namespace OneHourJam458
         [SerializeField]
         private GameObject _bullet;
 
+        [SerializeField]
+        private Transform _enemy;
+
+        private SpriteRenderer _sr;
+
+        private float _heatCounter;
+
         private Vector2 _mov;
 
         private Rigidbody2D _rb;
@@ -19,6 +26,7 @@ namespace OneHourJam458
         private void Awake()
         {
             _rb = GetComponent<Rigidbody2D>();
+            _sr = GetComponent<SpriteRenderer>();
         }
 
         private void FixedUpdate()
@@ -34,6 +42,19 @@ namespace OneHourJam458
                 go.GetComponent<Rigidbody2D>().velocity = Vector2.up * 10f;
                 Destroy(go, 10f);
                 StartCoroutine(Reload());
+            }
+
+            var d = Vector2.Distance(_enemy.position, transform.position);
+            var rD = 5f;
+            if (d < rD)
+            {
+                _heatCounter += ((rD - d) / rD) * Time.deltaTime * .5f;
+                var v = Mathf.Clamp01(_heatCounter);
+                _sr.color = new(1f - v, 1f - v, v);
+                if (_heatCounter >= 1f)
+                {
+                    Destroy(gameObject);
+                }
             }
         }
 
