@@ -32,7 +32,7 @@ namespace OneHourJam458
 
         private bool _didWin;
 
-        private int _clothCount = 4;
+        private int _clothCount = 5;
         public void LooseCloth()
         {
             _clothCount--;
