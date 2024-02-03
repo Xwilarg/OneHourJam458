@@ -12,6 +12,9 @@ namespace OneHourJam458
         [SerializeField]
         private Transform _enemy;
 
+        [SerializeField]
+        private GameObject _winTExt;
+
         private SpriteRenderer _sr;
 
         private float _heatCounter;
@@ -24,6 +27,14 @@ namespace OneHourJam458
         private bool _isShooting;
 
         private Camera _cam;
+
+        private bool _didWin;
+
+        private int _clothCount = 3;
+        public void LooseCloth()
+        {
+            _clothCount--;
+        }
 
         private void Awake()
         {
@@ -59,6 +70,8 @@ namespace OneHourJam458
                 Destroy(go, 10f);
                 StartCoroutine(Reload());
             }
+
+            if (_didWin) return;
 
             var d = Vector2.Distance(_enemy.position, transform.position);
             var rD = 5f;
