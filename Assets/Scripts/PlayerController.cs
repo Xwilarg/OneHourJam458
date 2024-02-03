@@ -53,6 +53,7 @@ namespace OneHourJam458
                 _sr.color = new(1f - v, 1f - v, v);
                 if (_heatCounter >= 1f)
                 {
+                    GameManager.Instance.Loose();
                     Destroy(gameObject);
                 }
             }
