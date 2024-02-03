@@ -2,7 +2,7 @@
 
 namespace OneHourJam458
 {
-    public class Cloth : MonoBehaviour
+    public class DCloth : MonoBehaviour
     {
         [SerializeField]
         private int _health;

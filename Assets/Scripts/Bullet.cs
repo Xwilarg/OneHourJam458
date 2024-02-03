@@ -6,7 +6,7 @@ namespace OneHourJam458
     {
         private void OnCollisionEnter2D(Collision2D collision)
         {
-            collision.gameObject.GetComponent<Cloth>().TakeDamage();
+            collision.collider.gameObject.GetComponent<DCloth>().TakeDamage();
             Destroy(gameObject);
         }
     }
