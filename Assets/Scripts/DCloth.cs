@@ -12,6 +12,7 @@ namespace OneHourJam458
             _health--;
             if (_health == 0)
             {
+                PlayerController.Instance.LooseCloth();
                 Destroy(gameObject);
             }
         }

@@ -6,6 +6,8 @@ namespace OneHourJam458
 {
     public class PlayerController : MonoBehaviour
     {
+        public static PlayerController Instance;
+
         [SerializeField]
         private GameObject _bullet;
 
@@ -30,14 +32,21 @@ namespace OneHourJam458
 
         private bool _didWin;
 
-        private int _clothCount = 3;
+        private int _clothCount = 4;
         public void LooseCloth()
         {
             _clothCount--;
+
+            if (_clothCount == 0 )
+            {
+                _didWin = true;
+                _winTExt.SetActive(true);
+            }
         }
 
         private void Awake()
         {
+            Instance = this;
             _cam = Camera.main;
             _rb = GetComponent<Rigidbody2D>();
             _sr = GetComponent<SpriteRenderer>();
