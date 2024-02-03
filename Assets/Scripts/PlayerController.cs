@@ -23,8 +23,11 @@ namespace OneHourJam458
         private bool _canShoot = true;
         private bool _isShooting;
 
+        private Camera _cam;
+
         private void Awake()
         {
+            _cam = Camera.main;
             _rb = GetComponent<Rigidbody2D>();
             _sr = GetComponent<SpriteRenderer>();
         }
@@ -34,8 +37,21 @@ namespace OneHourJam458
             _rb.velocity = _mov * 5f;
         }
 
+        // http://answers.unity.com/answers/502236/view.html
+        public Bounds CalculateBounds()
+        {
+            float screenAspect = Screen.width / (float)Screen.height;
+            float cameraHeight = _cam.orthographicSize * 2;
+            Bounds bounds = new(
+                _cam.transform.position,
+                new Vector3(cameraHeight * screenAspect, cameraHeight, 0));
+            return bounds;
+        }
+
         private void Update()
         {
+            var b = CalculateBounds();
+
             if (_isShooting && _canShoot)
             {
                 var go = Instantiate(_bullet, transform.position, Quaternion.identity);
@@ -46,6 +62,20 @@ namespace OneHourJam458
 
             var d = Vector2.Distance(_enemy.position, transform.position);
             var rD = 5f;
+
+            if (transform.position.x < b.min.x || transform.position.x > b.max.x || transform.position.y < b.min.y || transform.position.y > b.max.y)
+            {
+                _heatCounter += 1f * Time.deltaTime;
+                var v = Mathf.Clamp01(_heatCounter);
+                _sr.color = new(1f - v, 1f - v, v);
+                if (_heatCounter >= 1f)
+                {
+                    GameManager.Instance.Loose();
+                    Destroy(gameObject);
+                }
+
+            }
+
             if (d < rD)
             {
                 _heatCounter += ((rD - d) / rD) * Time.deltaTime * .5f;
