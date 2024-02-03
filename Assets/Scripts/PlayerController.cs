@@ -56,6 +56,13 @@ namespace OneHourJam458
                     Destroy(gameObject);
                 }
             }
+            else
+            {
+                _heatCounter -= .1f * Time.deltaTime;
+                if (_heatCounter < 0f) _heatCounter = 0f;
+                var v = Mathf.Clamp01(_heatCounter);
+                _sr.color = new(1f - v, 1f - v, v);
+            }
         }
 
         public void OnMove(InputAction.CallbackContext value)
